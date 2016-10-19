@@ -1,0 +1,119 @@
+#+TITLE:  5th Exercises
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+* 1st Question
+
+  Find and describe at least two different bijections between
+  \(\mathbf{Z^+}\) and \(\mathbf{Q^+}\).
+  
+** Answer
+
+| 1/1 | 2/1 | 3/1 | 4/1 |. . .
+| 1/2 | 2/2 | 3/2 | 4/2 |. . .
+| 1/3 | 2/3 | 3/3 | 4/3 |. . .
+| 1/4 | 2/4 | 3/4 | 4/4 |. . .
+ .       .     .     .
+ .       .     .     .
+ .       .     .     .
+
+A calkin wilf tree with a spiral through it can be created, counting
+the positive integers.
+
+** Feedback
+
+
+* 2nd Question
+
+  Describe the connection between the version using a table of
+  infinite bit strings of the Cantor Diagonalization argument showing
+  that the cardinality of the power set of the set of positive
+  integers is uncountably infinite, and the version below:
+
+  Consider all the functions /f/ that are defined on the positive
+  integers \(\mathbf{Z^+}\). The claim is that it is impossible to
+  arrange all these functions in a list.
+
+  /Proof:/ Assume that it *is* possible. Then there would be a first
+  function in the list. Call it \(f_1\). There would be a second
+  function \(f_2\), etc. Now, for each number \(n \in
+  \mathbf{Z^+}\), consider the numbers \(f_n(n) + 1\). This sequence
+  of numbers itself constitutes a function defined on
+  \(\mathbf{Z^+}\), and so, by our assumption, it must occur in the
+  list. Call it \(f_k\). By definition, \(f_k(n) = f_n(n) + 1\), and
+  this is valid for all \(n \in \mathbf{Z^+}\). In particular, it is
+  valid for \(n = k\), and this yields \(f_k(k) = f_k(k) + 1\).  Thus,
+  0 = 1, a contradiction. Q.E.D.
+
+** Answer
+
+In both cases a known number shows the member of the set that will not
+match any of the members listed.the subset so created cannot be in the
+list of subsets is analogous to the adding one to /f_n(n)/ operation
+that guarantees that the function so created cannot be in the list of
+functions.
+
+** Feedback
+
+* 3rd Question
+
+  How would you approach finding the positive values of the
+  26-variable primes polynomial (recall the 4th question on the 5th
+  quiz) to generate as many primes as possible with it?
+ 
+** Answer
+
+There could be 14 nested for loops that ran the polynomial with every
+ combination of letters to see what each postive value is.
+
+** Feedback
+
+* 4th Question
+
+  How would you generate the CFR for /e/, the base of natural
+  logarithms, using the supplied elisp code? What pattern in its
+  partial quotients is thus revealed?
+
+** Answer
+#+BEGIN_SRC emacs-lisp
+(continued-fraction-with-iterations float-e 20)
+#+END_SRC
+
+#+RESULTS:
+| 2 | 1 | 2 | 1 | 1 | 4 | 1 | 1 | 6 | 1 | 1 | 8 | 1 | 1 | 10 | 1 | 1 | 12 | 1 | 1 |
+
+The pattern after the first three numbers is two ones and then the
+next even number, starting with 4.
+
+** Feedback
+
+
+* 5th Question
+
+  If the *degree of irrationality* of an irrational number is defined
+  as the sum of the first few (up to 100) partial quotients of its
+  CFR, then the smaller in magnitude these partial quotients are, the
+  lower the degree of irrationality. Using this definition, what is
+  the "least" irrational number (the one with lowest degree)?
+
+** Answer
+
+If you take the golden ratio and find the CFR representation of it,
+you will get the following:
+
+#+BEGIN_SRC emacs-lisp
+(continued-fraction-with-iterations 1.61803398875 20)
+#+END_SRC
+
+#+RESULTS:
+| 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+
+It looks like the 1's will continue on forever. This is a low degree
+of irrationality.
+** Feedback
+
+
+

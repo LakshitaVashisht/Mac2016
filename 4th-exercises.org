@@ -1,0 +1,136 @@
+#+TITLE:  4th Exercises
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+* 1st Question
+
+  Let /A/ = =[0 2 4 6 8 10]=,
+      /B/ = =[0 1 2 3 4 5 6]=, and 
+      /C/ = =[4 5 6 7 8 9 10]=.
+
+  Find
+  1. \(A \cap B \cap C\)
+  2. \(A \cup B \cup C\)
+  3. \((A \cup B) \cap C\)
+  4. \((A \cap B) \cup C\)
+
+** Answer
+
+#+BEGIN_SRC emacs-lisp
+(setq A '(0 2 4 6 8 10))
+(setq B '(0 1 2 3 4 5 6))
+(setq C '(4 5 6 7 8 9 10))
+(union C (intersection A B))
+#+END_SRC
+
+#+RESULTS:
+| 0 | 2 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+
+1. [4 6]
+2  [10 9 8 7 0 1 2 3 4 5 6]
+3. [10 8 6 4 5]
+4. [0 2 4 5 6 7 8 9 10]
+
+** Feedback
+
+* 2nd Question
+
+  Find the *symmetric difference* (\(A \oplus B\)) (which, recall, is
+  the set containing those elements in either /A/ or /B/, but not in
+  both /A/ and /B/ --- i.e., \(A \oplus B = (A - B) \cup (B - A)\)) of
+  /A/ = =[1 3 5]= and /B/ = =[1 2 3]=.
+
+** Answer
+
+[2, 5]
+
+** Feedback
+
+* 3rd Question
+
+  Suppose that the universal set is
+
+  /U/ = =[1 2 3 4 5 6 7 8 9 10]=. 
+
+  Express each of these sets with bit strings where bit number /i/ in
+  the string is 1 if /i/ is in the set, and 0 otherwise.
+
+  1. =[3 4 5]=
+  2. =[1 3 6 10]=
+  3. =[2 3 4 7 8 9]=
+
+** Answer
+
+1. 0011100000
+2. 1010010001
+3. 0111001110
+
+** Feedback
+
+* 4th Question
+
+  Suppose that the universal set is
+
+  /U/ = =[1 2 3 4 5 6 7 8 9 10]=. 
+
+  Using that universal set, find the set specified by each of these
+  bit strings.
+
+  1. =1111001111=
+  2. =0101111000=
+  3. =1000000001=
+
+** Answer
+
+1. [1 2 3 4 7 8 9 10]
+2. [2 4 5 6 7]
+3. [1 10]
+
+** Feedback
+
+* 5th Question
+
+  What subsets of a finite universal set do these bit strings
+  represent?
+
+  1. the string with all zeros.
+  2. the string with all ones.
+
+** Answer
+
+1. The empty set
+2. 1111111111 represents the universal set subset of [1 2 3 4 5 6 7 8 9 10]
+
+** Feedback
+
+* 6th Question
+
+  What is the cardinality of the set of rational numbers?
+
+** Answer
+
+A countable infinity.
+
+** Feedback
+
+* 7th Question
+
+  Think of and describe a way to implement an infinite set in elisp.
+
+** Answer
+
+Think about how to do a membership test. That way you have a way to build up the
+set as infinitely as you like.
+
+#+BEGIN_SRC emacs-lisp
+(defun is-member-of-Z-+ (possible-member)
+   (and (integerp possible-member) (< 0 possible-member)))
+#+END_SRC
+
+
+** Feedback
+
+

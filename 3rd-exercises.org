@@ -1,0 +1,28 @@
+#+TITLE:  3rd Exercises
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:t toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+
+* Fuzzy Question
+
+  Investigate and report on some application of *fuzzy sets* and *fuzzy logic*.
+
+** Answer
+
+Set A is the set of all the places in the world that I want to
+travel. Set B is the set of all the things I can actually do this
+week. Getting all my homework done is membership of 1. Going to work
+has membership 1.  Getting a new phone has membership .5, though it
+probably should have membership 1. 
+
+In Fuzzy Logic everything matters to a degree. 
+
+A set of fuzzy logic rules can look like this:
+IF in a debate, the speaker is interesting to listen to then he wins the debate. 
+IF the speaker has some very strong arguments then he wins the debate.
+IF the speaker is unable to put his point across then he loses the debate.
+
+** Feedback

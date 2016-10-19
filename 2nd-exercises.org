@@ -1,0 +1,104 @@
+#+TITLE:  2nd Exercises
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+* 1st Question
+
+  What is true?
+
+  Put an X in each checkbox if true.
+
+  Hint: putting the cursor anywhere on a line with a checkbox in it,
+  typing C-c C-c (Control C twice) will toggle its checked state.
+
+  - [X] \emptyset \in {\emptyset}
+  - [X] \emptyset \in {\emptyset, {\emptyset}}
+  - [ ] {\emptyset} \in {\emptyset}
+  - [X] {\emptyset} \in {{\emptyset}}
+  - [X] {\emptyset} \subset {\emptyset, {\emptyset}}
+  - [X] {{\emptyset}} \subset {\emptyset, {\emptyset}}
+  - [ ] {{\emptyset}} \subset {{\emptyset}, {\emptyset}}
+
+** Answer
+
+*** Feedback
+
+
+* 2nd Question
+
+  What is the cardinality (size) of each of these sets?
+
+  1. \emptyset
+  2. {\emptyset}
+  3. {\emptyset, {\emptyset}}
+  4. {\emptyset, {\emptyset}, {\emptyset, {\emptyset}}}
+  
+** Answer
+1. 0
+2. 1
+3. 2
+4. 3
+*** Feedback
+
+
+* 3rd Question
+
+  This is about the Cartesian product (\times) of sets.
+
+  Let A = {a, b, c}, B = {x, y}, and C = {0, 1}. Find
+
+  1. A \times B \times C
+  2. C \times B \times A
+  3. C \times A \times B
+  4. B \times B \times B
+
+** Answer
+1. {(a,x,0), (a,x,1) (a,y,0), (a,y,1), 
+(b,x,0), (b,x,1) (b,y,0), (b,y,1),
+(c,x,0), (c,x,1) (c,y,0), (c,y,1)}
+
+2. {(0,x,a),(0,x,b),(0,x,c),
+(0,y,a), (0,y,b), (0,y,c),
+(1,x,a), (1,x,b), (1,x,c),
+(1,y,a), (1,y,b), (1,y,c)}
+
+3. {(0,a,x), (0,a,y),
+(0,b,x), (0,b,y),
+(0,c,x), (0,c,y),
+(1,a,x), (1,a,y),
+(1,b,x), (1,b,y),
+(1,c,x), (1,c,y)}
+
+4. {(x, x, x), (x, x, y), 
+(x, y, x), (x, y, y),
+(y, x, x), (y, x, y),
+(y, y, x), (y, y, y)}
+
+*** Feedback
+
+
+* 4th Question
+
+  *Russell's paradox* is as follows:
+
+  Let /S/ be the set that contains a set /x/ if the set /x/ does not belong to
+  itself, so that /S/ = {x | x \notin x}
+
+  1. Show that the assumption that /S/ is a member of /S/ leads to a
+     contradiction.
+
+  2. Show that the assumption that /S/ is *not* a member of /S/ leads
+     to a contradiction.
+
+** Answer
+1. If /S/ is a member of /S/, then /S/ will contain itself, and /S/ will contain
+   a set which contains itself. /S/ is not supposed to contain any sets which
+   contain themselves.
+2. If /S/ is *not* a member of /S/, the rule that all sets which do not contain
+   themselves are members of /S/ will be violated, since /S/ is *not* a member
+   of /S/ and it is *not* a member of /S/.
+*** Feedback
+
