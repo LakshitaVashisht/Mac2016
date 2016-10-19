@@ -1,0 +1,124 @@
+#+TITLE:  0th Quiz
+#+AUTHOR: Lucky Vashisht
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:t toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+
+* Everything I know about Discrete Math
+
+(1) Proposition is a statement that is either true(t) or false(nil). 
+(2) Connectives are used to make a proposition compound. 
+Let p and q represent two given propositions. 
+(3) Negation of p is not p. 
+A (4) Conjunction of is both p and q, (5) disjunction is p or q or both. 
+An (6) exclusive OR is either p or q, but not both. 
+An (7) Implication is if p then q. 
+A (8) truth table can be used to show the truth/falsity of a preposition. 
+A proposition of the form if p then q is a (9) conditional proposition. 
+Two propositions are (10) logically equivalent if they have the same truth values. 
+If p then q and if q then p both exist then the second is the (11) converse of the first.
+ (12) Contrapositive of a conditional proposition if p then q is if not q then not p because they are logically equivalent. 
+(13) A predicate is a property that a variable may have. 
+Each variable belongs to a (14) domain for the instance of the predicate. 
+(15) Quantifiers express the (16) Range of the elements that the statement is about.
+(17) A universal quantifier represents ‘all’ values of a variable in a domain.
+(18) The existential quantifier represents at least one or for some values of a variable in a domain. 
+(19) A set is a collection of objects. Objects are called (20) elements of a set. An element is said to (21) belong to a set. 
+(22) N is a set of Natural Numbers {0,1, 2…….}
+(23) Z is the set of integers {…., -3, -2, -1, 0, 1, 2, 3, …...}
+(24) R is the set of Real Numbers
+Let A and B be two sets. 
+If is contained in B, then A is a (25) subset of B. 
+A is a (26) proper subset of B, if A is a subset of B and A and B are not equal. 
+A set with no elements is an (27) empty set. 
+Collection of all subsets of a set is a (28) Power Set.
+Graphical representation of a set can be done with a (29) Venn Diagram.
+(30) Intersection is the common elements between sets.
+(31) Union is all the elements that belong to either two sets. 
+(32) Complement of a set is everything that doesn’t belong to a set.
+(33) Difference of a set are the elements that belong to one set but not the other.
+(34) Symmetric Difference is the set of elements that belong to either one or the other set but not both.
+(35) De Morgan’s Law
+(36) Floor function is the greatest integer less than or equal to x.
+(36) The ceiling function is the least integer greater than or equal to x. 
+(37) Modulus Function is the function mod. 
+(38) A Function defines a relationship between an input and output
+(39) When a function has one A pointing to one B, its one-to-one
+(40) When a function has one A pointing to many B, is one-to-many
+(41) when a function has many A pointing to one B, it’s many-to-one
+(42) when a function has many A pointing to many B, it’s a many-to-many relation
+(43) Injective function is every member of A has a unique image in B
+(44) In Surjective function every B has at least one matching A. 
+(45) A bijective is both Surjective and Injective
+(46) An injective function may or may not be an inverse function
+(47) Surjective are also called an onto function
+(48) If a task has 2 steps and there are m ways to do the 1st task and, there are n ways to do the 2nd task, then there are mn ways to do the complete task. It is called the (49) Product Rule
+(50) If sets A and B are disjoint, then |A ∪ B| = |A| + |B|.
+(51) A permutation of a set of objects is an arrangement of these objects
+(52) P(n,r) = n! / (n - r)! 
+(53) A combination of a set of objects is an arrangement of these objects where order matters.
+(54) A Permutation is an ordered Combination.
+(55) In a Permutation when a repition is allowed, when a thing has n different types, we have n choices each time.
+(56) In Permutations without Repetition we reduce the number of available choices each time.
+(57) C(n,r) = n! / r! (n - r)! 
+(58) The probability of an (59)
+event is called (60) P(A) (61) which is a positive number less than or equal to 1. 
+(0 <= P(A) <= 1)
+(62) The total probability for all possible exclusive outcomes should be 1. 
+(63) The joint probability of two different events is denoted P(A,B). 
+(64) Conditional probability (probability of A given B) P(A|B) = P(A,B)/ P(B)
+(65) Independence ) P(A|B) = P(A) 
+(66) P(A,B) = P(A)P(B)
+(67) R is reflexive if for all x  A, xRx.
+(68) R is symmetric if for all x,y  A, if xRy, then yRx.
+(69) R is transitive if for all x,y, z  A, if xRy and yRz, then xRz.
+(70) R is an equivalence relation if A is nonempty and R is reflexive, symmetric and transitive.
+ (71) A relation R on a set A is called ant symmetric if (x,y) Œ R and (y,x) Œ R implies x = y
+(72) The Complement Rule: P(not A) = 1 - P(A)
+(73) A graph G consists of a non-empty set of (74)vertices or nodes V and a set of (75)edges E.
+(76) G = (V, E) 
+(77) The degree of a vertex is the number of edges incident with the vertex V.
+(78) The degree of a graph is the largest vertex degree of that graph
+(79) the sum of all the degrees of vertices is equal to twice the number of edges.
+(80) A null graph has no edges
+(81) A graph is called simple graph if the graph is undirected and does not contain any loops or multiple edges.
+ (82) It’s a multi graph if there are multiple edges between the same set of vertices
+ (83) It is a directed graph if the edge set is made of ordered vertex pair
+ (84) A graph is undirected if the edge set is made of unordered vertex pair.
+ (85) A graph is connected if any two vertices of the graph are connected by a path
+ (86) a graph is disconnected if at least two vertices of the graph are not connected by a path. 
+ (87) A graph is regular if all the vertices of the graph have the same degree.
+ (88) A graph is called complete graph if every two vertices pair are joined by exactly one edge.
+(89) Division Theorem: Let a be an integer and b be a positive integer. Then there exist unique integers q and r such that (90) a = bq + r  
+(91) Greatest Common Divisor (GCD) of two integers A and B is the largest integer that divides both A and B.
+ (92) A = 0 then GCD(A,B)=B
+(93) A = B⋅Q + R
+(94) LCM: The smallest positive number that is a multiple of two or more numbers.
+(95) A tree is a collection of nodes and links
+(96) A binary tree has two links coming from each node.
+(97) A tree is a connected simple undirected graph with no simple circuits.
+(98) A leaf is a vertex with no children
+(99) The height of a rooted tree is the length of the longest directed path from the root to any leaf.
+(100) Huffman encoding is a type of variable-length encoding that is based on the actual character frequencies in a given document.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
