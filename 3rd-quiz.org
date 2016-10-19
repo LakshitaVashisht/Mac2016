@@ -1,0 +1,153 @@
+#+TITLE:  3rd Quiz
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+
+Heads Up: this will be a quiz on the [[file:../cof/omeli.org][omeli]] tutorial and the in-class
+tutorial we did on the [[file:../cof/lisp-loop-lambda-closure.org][lisp-loop-lambda-closure]] concepts.
+
+* 1st Question
+
+   To *evaluate* an expression in lisp means to reduce it to its value.
+
+  - [X] True
+  - [ ] False
+
+*** Feedback
+
+
+* 2nd Question
+
+  Lisp symbols are *only* used as variables, i.e., for holding values.
+
+  - [ ] True
+  - [X] False
+
+*** Feedback
+
+
+* 3rd Question
+
+  Evaluating a list involves evaluating each of its elements except
+  one. Which one?
+
+** Short Answer
+1st
+*** Feedback
+
+
+* 4th Question
+
+  Which of the following emacs lisp types *DO NOT* self-evaluate?
+
+   1. numbers
+   2. characters
+   3. strings
+   4. lists
+   5. vectors
+   6. t
+   7. nil
+
+** Short Answer
+Lists
+*** Feedback
+
+
+* 5th Question
+
+ 
+
+#+BEGIN_SRC emacs-lisp
+  (if p (not q) q)
+#+END_SRC
+
+  implements the exclusive-or operator, returning true when /p/ is
+  true or /q/ is true, but not both. How?
+
+** Short Answer
+
+If p and q are true, the function will return nil.  If p is true and q
+is false, the function will return t.  If p is not true, the function
+will return q.  If p is false and q is true, the function will return
+t.  If p is false and q is false, the function will return nil.
+
+
+*** Feedback
+
+
+* 6th Question
+
+  The loop macro supports a wide variety of iteration constructs.
+  Write a loop macro iteration that will get the number of characters
+  in each string in a vector of strings and return a list of the
+  resulting counts, excluding those exceeding 6.
+
+** Short Answer
+#+BEGIN_SRC emacs-lisp
+((lambda(vec-of-strings) 
+   (loop for str across vec-of-strings 
+         if (> 7 (length str)) collect (length str))) ["victor" "alex" "neal" "tiberius"])
+#+END_SRC
+
+#+RESULTS:
+| 6 | 4 | 4 |
+
+*** Feedback
+
+
+* 7th Question
+
+  How do you get the anonymous =lambda= attached to a named function?
+
+
+** Short Answer
+LAmbda can be set by using funcall. 
+
+#+BEGIN_SRC emacs-lisp
+(setq square (lambda (x) (* x x)))
+(funcall square 2)
+#+END_SRC
+
+#+RESULTS:
+: 4
+
+*** Feedback
+
+
+* 8th Question
+
+  What is the printed representation of a =closure=?
+
+** Short Answer
+
+#+BEGIN_SRC emacs-lisp
+(defun enclosed (x)
+    (closure ((x . 0) t) () (setq x (1+ x))))
+
+(setq copy-function (enclosed 11))
+
+(funcall copy-function)
+
+#+END_SRC
+
+#+RESULTS:
+: t
+
+*** Feedback
+
+
+* 9th Question
+
+  A lexically-bound variable has "lexical scope", meaning that any
+  reference to the variable must be located textually within the
+  binding construct. What does using lexical binding facilitate?
+  (Hint: see the Elisp built-in info page (M-x info).)
+
+** Short Answer
+
+*** Feedback
+
+

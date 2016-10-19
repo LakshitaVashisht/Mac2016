@@ -1,0 +1,126 @@
+#+TITLE:  5th Quiz
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+These are some questions about Cantor Diagonalization, Diophantine
+Equations, and Continued Fractions.
+
+* 1st Question
+
+  The function \(Table(i, j) = ((i - 1)/2^{j - 1}) \% 2\) is useful
+  for filling out the table in the Cantor Diagonalization argument
+  showing that the cardinality of the power set of the set of positive
+  integers is uncountably infinite, because it allows the table
+  filling to happen in a very systematic way.
+
+  What is the digit at \(Table(13, 3)\)? (Remember that % is the
+  modulus operator and that / is doing integer division (truncating
+  any fractional part).)
+
+  - [X] 0
+  - [ ] 1
+
+* 2nd Question
+
+  In the Cantor Diagonalization argument showing that the cardinality
+  of the power set of the set of positive integers is uncountably
+  infinite, the following is a function that constructs the \(n^{th}\)
+  "diagonal" digit; which digits, taken all at once, are the elements
+  of the subset necessarily missing from the supposedly complete list
+  of subsets:
+
+  \(Digit(n) = 1 - Table(n, n)\)
+
+  - [X] True
+  - [ ] False
+
+#+BEGIN_SRC emacs-lisp
+(defun table (i j)
+(% (/ (- i 1) (expt 2 (- j 1))) 2)
+)
+
+(- 1 (table 20 20))
+#+END_SRC
+
+#+RESULTS:
+: 1
+
+* 3rd Question
+
+  Depicted below is the "infinite binary tree". (Naturally, this is
+  only a conceptualization of something that cannot actually be
+  drawn.) The tree is constructed by letting all possible paths move
+  upward, forking infinitely many times. By continually halving
+  distances, an infinite number of "branches" (or nodes) will fit
+  below the horizontal line. Imagine each point on this line as being
+  a "leaf" that lies at the end of one of the infinitely zigzagged
+  paths up through the tree. Starting from the bottom (the root of the
+  tree) to trace a complete path up to the horizontal line one makes
+  an infinite number of Left-Right decisions (Left corresponding to 0
+  and Right to 1). For example, the path where the squiggly line meets
+  the horizontal line corresponds to the infinite sequence: 0, 1, 1,
+  0, 1, .... Starting from the bottom single node, the number of nodes
+  at each step doubles as the distance to the horizontal line halves.
+
+  #+ATTR_HTML: :alt infinite binary tree :title Infinite Binary Tree
+  [[https://firstthreeodds.org/img/infinitebinarytree.png]]
+
+
+  Which of the following statements is true of this tree in its finished form?
+
+  - [ ] It has a countable number of nodes and a countable number of paths.
+  - [X] It has a countable number of nodes and an uncountable number of paths.
+  - [ ] It has an uncountable number of nodes and a countable number of paths.
+  - [ ] It has an uncountable number of nodes and an uncountable number of paths.
+
+* 4th Question
+
+  In 1976, James Jones, Daihachiro Sato, Hideo Wada, and Douglas Wiens
+  published the following polynomial:
+
+\(\begin{array}{rcl}
+(k + 2)\{(1 &-& [wz + h + j - q]^2\\
+            &-& [(gk + 2g + k + 1)(h + j) + h - z]^2\\
+  	    &-& [16(k + 1)^3(k + 2)(n + 1)^2 + 1 - f^2]^2\\
+	    &-& [2n + p + q + z - e]^2\\
+	    &-& [e^3(e + 2)(a + 1)^2 + 1 - o^2]^2\\
+	    &-& [(a^2 - 1)y^2 + 1 - x^2]^2\\
+	    &-& [16r^2 y^4(a^2 - 1) + 1 - u^2]^2\\
+	    &-& [n + l + v - y]^2\\
+	    &-& [((a + u^2(u^2 - a))^2 - 1)(n + 4dy)^2 + 1 - (x + cu)^2]^2\\
+	    &-& [(a^2 - 1)l^2 + 1 - m^2]^2\\
+	    &-& [q + y(a - p - 1) + s(2ap + 2a - p^2 - 2p - 2) - x]^2\\
+	    &-& [z + pl(a - p) + t(2ap - p^2 - 1) - pm]^2\\
+	    &-& [ai + k + 1 - l - i]^2\\
+	    &-& [p + l(a - n - 1) + b(2an + 2a - n^2 - 2n - 2) - m]^2\}\end{array}\)
+
+  This polynomial contains 26 variables (all the letters of the
+  alphabet!), and the set of its /positive/ values is exactly the set
+  of all prime numbers.
+
+  Given /k/ = 0, find some possible values for /w/, /z/, /h/, /j/,
+  /q/, and /g/, that /could/ result in the value 2, the first prime
+  number, for the entire polynomial.
+
+** Short Answer
+
+*** Feedback
+
+* 5th Question
+
+  The code in [[file:../cof/continued-fractions.org][continued-fractions.org]] can theoretically give you the
+  first few partial quotients (coefficients) of the *continued
+  fraction representation* (CFR) of any positive rational or
+  irrational number. Find and compare the CFRs of the square root of 2
+  =(sqrt 2.0)= and the rational number \(\frac{1393}{985}\).
+
+** Short Answer
+Square root of two with seven iterations:
+| 1 | 2 | 2 | 2 | 2 | 2 | 2 |
+
+1393/985 with seven iterations:
+| 1 | 2 | 2 | 2 | 2 | 2 | 2 |
+*** Feedback

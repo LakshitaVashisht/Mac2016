@@ -1,0 +1,54 @@
+#+TITLE:  4th Quiz
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:t toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+
+This quiz is about the Cantor set, other Infinite sets and Cardinality.
+
+* 1st Question
+
+  The Cantor set exhibits self-similarity at smaller scales, which is
+  one of the characteristics of a *fractal*.
+
+  - [X] True
+  - [ ] False
+
+*** Feedback
+
+
+* 2nd Question
+
+  Even though "almost no" numbers are in the Cantor set, it is
+  "equinumerous" with the set of real numbers between 0 and 1 (meaning
+  the same size as).
+
+  - [X] True
+  - [ ] False
+
+*** Feedback
+
+
+* 3rd Question
+
+  "Almost all" positive integers are bigger than Graham's number.
+
+  - [X] True
+  - [ ] False
+
+*** Feedback
+
+
+* 4th Question
+
+  Where in the scriptures does the word "infinity" occur?
+
+** Answer
+Doctrine and Covenants 109:77, "Where thou sittest enthroned, with...an infinity
+of fulness, from everlasting to everlasting."
+
+
+*** Feedback
+
