@@ -1,0 +1,68 @@
+#+TITLE:  6th Quiz
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+This is on partially ordered sets (posets):
+
+* 1st Question
+
+  A poset is a relation that is both a /preorder/ and is /transitive/.
+
+  - [ ] True
+  - [X] False
+
+*** Feedback
+
+
+* 2nd Question
+
+  Which of the following pairs of sets (before the comma, given in
+  lisp vector form) and partial orders (after the comma, the relations
+  given in symbolic form) are posets?
+
+  - [X] \(([2\ 3\ 4\ 6\ 9\ 12\ 18\ 24\ 36], \mid)\)
+  - [X] \((Power\ set\ of\ [1\ 2\ 3\ 4], \subseteq)\)
+  - [X] \((\mathbf{Z^+}, \leq)\)
+  - [ ] \(([0\ 1\ 2\ 3\ 4], \equiv_5)\)
+
+*** Feedback
+
+
+* 3rd Question
+
+  A certain type of a partial order on Cartesian products of sets or
+  strings over some alphabet is called *lexicographic order*.
+
+  Such a partial order on sets /A_i/ induces this lexicographic order
+  on \(A_1 \times A_2 \times \cdots \times A_n\) given by \((a_1, a_2,
+  \ldots, a_n) \prec (b_1, b_2, \ldots, b_n)\) if for some \(i \ge 0,
+  a_1 = b_1, \ldots, a_i = b_i\), and \(a_{i + 1} \prec b_{i + 1}\).
+
+  A partial order on /A/ induces lexicographic order on strings of any
+  finite length given by \(a_1a_2\ldots a_n \prec b_1b_2\ldots b_m\)
+  if \((a_1, a_2, \ldots, a_t) \prec (b_1, b_2, \ldots, b_t)\) where
+  \(t = min(m, n)\) or if \((a_1, a_2, \ldots, a_n) = (b_1, b_2,
+  \ldots, b_n)\) and \(n < m\).
+
+  Show you understand these definitions. For the Cartesian product,
+  let \(S = \{1, 2, 3, 4\}\). With respect to the lexicographic order
+  based on the usual less-than relation, do the following:
+
+  1. Find all pairs in \(S \times S\) less than (2, 3). 
+  2. Find all pairs in \(S \times S\) greater than (3, 1). 
+
+  For strings, which of the following gives the correct lexicographic
+  order of \(\{"aa", "aab", "ac", "abb", "b", "ba", "bba"\}\)?
+
+  - [ ] "aa", "aab", "abb", "ac", "b", "ba", "bba"
+  - [X] "b", "aa", "ac", "ba", "aab", "abb", "bba"
+  - [ ] "aa", "ac", "aab", "abb", "b", "ba", "bba"
+  - [ ] "aa", "aab", "ac", "abb", "ba", "b", "bba"
+
+** Answer
+
+*** Feedback
+
