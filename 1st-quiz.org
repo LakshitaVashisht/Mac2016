@@ -1,0 +1,80 @@
+#+TITLE:  1st Quiz
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:t toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+
+* 1st Question
+
+  What is a set?
+
+** Short Answer
+
+A set is a group of distinct elements. In mathematics, in a set,
+elements are unordered.
+
+** Feedback
+
+
+* 2nd Question
+
+  What is set intersection?
+
+** Short Answer
+
+The intersection of 2 sets, contains all of the elements that
+are in both the sets. 
+
+** Feedback
+
+
+* 3rd Question
+
+ What is set union?
+
+** Short Answer
+
+For 2 sets A and The union of set A and set B contains all the elements that are either in A or
+in B.
+
+** Feedback
+
+
+* 4th Question
+
+  What is set complementation?
+
+** Short Answer
+
+A set complement is the negation of a set. Every element in the universe that is
+not in set A is in the complement of set A.
+
+** Feedback
+
+
+* 5th Question
+
+  What is set difference?
+
+** Short Answer
+
+The difference between set A and set B contains all of the elements in set A,
+except any which are also in set B.
+
+** Feedback
+
+
+* 6th Question
+
+  What is set symmetric difference?
+
+** Short Answer
+
+For set A and set B, the symmetric difference contains all of the elements of
+set A except those which are also in set B; it also contains all of the elements
+in set B except those which are also in set A.
+
+** Feedback
+

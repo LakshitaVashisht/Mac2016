@@ -1,0 +1,49 @@
+#+TITLE:  2nd Quiz
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:t toc:nil \n:t @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+* 1st Question
+
+  Show the logical equivalence of the set identities (A - B \cup B - A)
+  and (A \cup B - A \cap B) 
+
+  Use the logical/set definitions and identities we talked about.
+
+** Short Answer
+Taking the RHS
+(A \cup B) \cap (\not(A \cap B))
+-> (\not A \cup \not B) (Using De Morgan's Law)
+-> (A \cup B) \cap (\not A \cup \not B)
+-> ((A \cap \not A) \cup (A \cap \not B)) \cup ((B \cap \not A) \cup (B \cap \not B)) 
+-> (A \cap \not B) \cup (B \cap \not A)
+-> (A - B) \cup (B - A)
+
+** Feedback
+
+
+* 2nd Question
+
+  DeMorgan's laws for sets involve the set complementation operator.
+
+  - [X] True
+  - [ ] False
+
+** Short Answer
+
+
+** Feedback
+
+
+* 3rd Question
+
+  Lisp is a dynamically-typed language.
+
+  - [X] True
+  - [ ] False
+
+** Feedback
+
+
