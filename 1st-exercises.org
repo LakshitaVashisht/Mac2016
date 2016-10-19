@@ -1,0 +1,117 @@
+#+TITLE:  1st Exercises
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:t toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+
+* Question
+
+  How are sets implemented in your favorite programming language?
+  
+  Get nitty-gritty with the details.
+
+** Answer
+My favorite language is C#. C# doesn't have any inbuilt features for
+working with sets. If I want to use sets, then I have to create my own
+set class with the methods and functions that I want it to have.
+
+Below is a simple implementation of a set class in C#.  It contains
+ methods to add something to a set, remove something. It can also
+ check if something is in a set.  This class also count the number of
+ elements of a set. The set class can also Union 2 sets and take out
+ the difference between 2 sets.
+
+
+#+BEGIN_SRC C#
+public class Set : IEnumerable
+    {
+        private readonly Dictionary<object, bool> _items;
+
+        public Set()
+        {
+            _items = new Dictionary<object, bool>();
+        }
+
+        public void Add(object item)
+        {
+            if (!_items.ContainsKey(item))
+            {
+                _items.Add(item, true);
+            }
+        }
+
+        public void Remove(object item)
+        {
+            if (_items.ContainsKey(item))
+            {
+                _items.Remove(item);
+            }
+        }
+
+        public bool Contains(object item)
+        {
+            return _items.ContainsKey(item);
+        }
+
+        public int Count()
+        {
+            return _items.Keys.Count;
+        }
+
+        public void Clear()
+        {
+            _items.Clear();
+        }
+
+        public void UnionWith(Set input)
+        {
+            foreach (var item in input.Cast<object>().Where(item => !_items.ContainsKey(item)))
+            {
+                _items.Add(item, true);
+            }
+        }
+
+        public void IntersectWith(Set input)
+        {
+            var newSet = new Set();
+            foreach (var item in _items.Keys.Where(input.Contains))
+            {
+                newSet.Add(item);
+            }
+            Clear();
+            foreach (var item in newSet)
+            {
+                _items.Add(item, true);
+            }
+        }
+
+        public void DifferenceWith(Set input)
+        {
+            var newSet = new Set();
+            foreach (var item in _items.Keys.Where(item => !input.Contains(item)))
+            {
+                newSet.Add(item);
+            }
+            Clear();
+            foreach (var item in newSet)
+            {
+                _items.Add(item, true);
+            }
+        }
+
+        public bool IsSubsetOf(Set input)
+        {
+            return _items.Keys.All(input.Contains);
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return _items.Keys.GetEnumerator();
+        }
+    }
+#+END_SRC
+
+
+** Feedback
