@@ -1,0 +1,244 @@
+#+TITLE:  7th Quiz
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+This is a quiz on Pascal's triangle, combinatorial proofs, multisets and
+multichoosing, and partitions of integers.
+
+* 1st Question
+
+  Here are two different identities that point out the same pattern in
+  Pascal's triangle. What is the name of this pattern?
+
+** 1st Identity
+
+  \[\sum_{i=0}^{m-1}{n+i \choose k} = {n+m \choose k+1}\]
+
+** 2nd Identity
+
+   \[\sum_{i=0}^{m-1}{n+i \choose i} = {n+m \choose m-1}\]
+
+** Answer
+ Pascal's rule
+
+*** Feedback
+
+* 2nd Question
+
+  Give a combinatorial argument that the number of ways to choose two
+  numbers from the consecutive numbers 1 through 2n is both (2n
+  choose 2) and 2 times (n choose 2) plus n squared.
+
+  \({2n \choose 2} = 2 {n \choose 2} + n^2\)
+
+
+* 3rd Question
+
+  Using this code ---
+
+#+BEGIN_SRC emacs-lisp
+  (defun factorize (n)
+    (let ((factors nil)
+          (k 0)
+          (p 2))
+      (while (zerop (% n p))
+        (setq n (/ n p)
+              k (1+ k)))
+      (if (not (zerop k))
+          (setq factors (cons (cons p k) factors)))
+      (setq p 1)
+      (while (<= (* p p) n)
+        (setq p (+ p 2)
+              k 0)
+        (while (zerop (% n p))
+          (setq n (/ n p)
+                k (1+ k)))
+        (if (not (zerop k))
+            (setq factors (cons (cons p k) factors))))
+      (if (not (= n 1))
+          (setq factors (cons (cons n 1) factors)))
+      factors))
+
+  (defun degree-of-two (n)
+    (or (cdr (assoc 2 (factorize n))) 0))
+
+  (defun two-n-choose-n (n)
+    (let* ((next-falling (* 2 n))
+           (falling 1)
+           (rising 1))
+      (loop for r from 1 to n
+            do (setq rising (* rising r)
+                     falling (* falling next-falling)
+                     next-falling (1- next-falling)))
+      (/ falling rising)))
+
+  (defun to-binary (n)
+    (let ((d (/ n 2))
+          (m (% n 2)))
+      (if (= d 0)
+          (list m)
+        (append (to-binary d) (list m)))))
+
+  (defun tryit (n)
+    (= (degree-of-two n) (apply #'+ (to-binary n))))
+
+  (defun success ()
+    (loop for n from 1 to 13 always (tryit n)))
+
+  (defun failure ()
+    (loop for n from 14 to 21 always (tryit n)))
+#+END_SRC
+
+  --- investigate the assertion that the number (degree, exponent) of
+  2's in the prime factorization of /(2n choose n)/ is the number of
+  1's in the binary expansion of /n/.
+
+** Answer
+
+*** Feedback
+
+* 4th Question
+
+  Given this code ---
+
+#+BEGIN_SRC emacs-lisp :tangle prime-multisequence.el
+  (defvar primes [2 3 5 7 11 13 17 19 23 29 31 37 41 43])
+
+  (defun prime-multisequence-to-flat-multiset (prime-multisequence)
+      (loop for prime across primes
+            for multiplicity across prime-multisequence
+            append (loop repeat multiplicity collect prime)))
+
+  (defun prime-multisequence-to-dotted-multiset (prime-multisequence)
+      (loop for prime across primes
+            for multiplicity across prime-multisequence
+            collect (cons prime multiplicity)))
+#+END_SRC
+
+  --- modify these calls to it to produce vectors of the composite
+  numbers represented by the given prime multisequences:
+
+#+BEGIN_SRC emacs-lisp
+  
+(map 'vector (lambda (x) (apply '* x))
+(map 'vector 'prime-multisequence-to-flat-multiset
+     [[3 3 2 1 1]
+      [3 2 2 1 1 1]
+      [3 2 1 1]
+      [3 3 1 1 1 1]
+      [4 1 1 1 1]
+      [2 1 1]
+      [2 2 1 1]
+      [3 1 1 1]
+      [2 1 1]
+      [2 2 2 1 1]
+      [3 1 1 1]
+      [2 2 1 1]
+      ]))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  (map 'vector 'prime-multisequence-to-dotted-multiset
+     [[3 3 2 1 1]
+      [3 2 2 1 1 1]
+      [3 2 1 1]
+      [3 3 1 1 1 1]
+      [4 1 1 1 1]
+      [2 1 1]
+      [2 2 1 1]
+      [3 1 1 1]
+      [2 1 1]
+      [2 2 2 1 1]
+      [3 1 1 1]
+      [2 2 1 1]
+      ])))
+#+END_SRC
+
+** Answer
+
+*** Feedback
+
+* 5th Question
+
+  /n/ multichoose /k/ has to do with /k/ stars and /n - 1/ bars.
+
+  - [X] True
+  - [ ] False
+
+* 6th Question
+
+  (3 multichoose 10) = (12 choose 10)
+
+  - [X] True
+  - [ ] False
+
+* 7th Question
+
+  How many different ways can you get a bucket of 10 scoops of ice
+  cream, from a set of 3 possible flavors: vanilla, chocolate and
+  strawberry?
+
+** Short Answer
+
+66
+
+*** Feedback
+
+* 8th Question
+
+  (n multichoose k - n) simplifies to (k - 1 choose n - 1).
+
+  This models the problem, for example, of counting the number of ways
+  of assigning /k/ *kids* to /n/ *nannies* such that every nanny is
+  assigned at least one kid. For the case of 11 kids and 4 nannies,
+  which of the following shows the *immediate* connection between (n
+  multichoose k - n) and (k - 1 choose n - 1)?
+
+  - [ ] =*_*_*|*_*_*_*|*_*|*_*=
+  - [X] =*|*|*|********=
+  - [ ] =********|*|*|*=
+  - [ ] =_*|*_*_*|*_*_*|*_=
+
+* 9th Question
+
+  How many ways can 11 different books be given to 4 students, Mary,
+  Paul, Irene and Stan, if Mary is to receive 1 book, Paul is to
+  receive 2 books, Irene is to receive 4 books, and Stan is to receive
+  4 books?
+
+  Which of the following computes the answer to this counting
+  question?
+
+  - [X] (11 choose 4) * (7 choose 4) * (3 choose 2) * (1 choose 1)
+  - [ ] The number of different ways the letters in the word
+    =MISSISSIPPI= can be arranged.
+  - [ ] The number of different ways to assign 11 *kids* to 4
+    *nannies*.
+  - [ ] The number of different ways to choose 4 things out of 14 with
+    repetition allowed.
+
+* Ath Question
+
+  Partitions of integers can be calculated many different ways. How
+  many partitions there are of a given integer, in other words, the
+  *number* of partitions of a given integer, is also calculable many
+  different ways.  Here's a recurrence relation (an equation that
+  defines the next term in the sequence as a function of the previous
+  terms) that gives the number of partitions of a positive integer
+  /k/:
+
+  \(p(k) = p(k − 1) + p(k − 2) − p(k − 5) − p(k − 7) + p(k − 12) + p(k
+  − 15) − p(k − 22) − p(k - 26) ...\)
+
+  where /p(0)/ is taken to equal 1, and /p(n)/ is taken to be zero for
+  negative /n/.
+
+  Write elisp code to calculate /p(k)/ in general, and /p(20)/ in
+  particular.
+
+** Answer
+
+*** Feedback
