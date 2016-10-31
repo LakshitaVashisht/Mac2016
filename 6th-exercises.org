@@ -1,0 +1,90 @@
+#+TITLE:  6th Exercises
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+* 1st Question
+
+  Suppose that /k/ and /n/ are integers with \(1 \le k \le n\). Argue
+  using the /n-choose-k/ definition and algebra for the validity of
+  the *hexagon identity* \({n - 1 \choose k - 1}{n \choose k + 1}{n +
+  1 \choose k} = {n - 1 \choose k}{n \choose k - 1}{n + 1 \choose k +
+  1}\) which relates terms in Pascal's triangle that form a hexagon.
+
+** Answer
+
+Write out both sides of the equation in the factorial form. I have not
+completely figured out how to reduce all of the pieces appropriately, but there
+should be the same terms on both sides of the equation.
+
+** Feedback
+
+* 2nd Question
+
+  Argue for the validity of the identity \({n \choose r}{r \choose k}
+  = {n \choose k}{n - k \choose r - k}\), whenever /n/, /r/, and /k/
+  are nonnegative integers with \(r \le n\) and \(k \le r\), using a
+  combinatorial argument.
+
+** Answer
+
+If you count the number of ways to choose a committee of r size from n people,
+multiplied :by the number of ways to choose a subcommitte of k people from that
+committee, you get all of the possible ways to choose a committee of size r from
+n people, and all the possible ways to choose a subcomittee of size k from any
+of those possible committees of size r. This describes the left half of the
+equation.
+
+On the right side of the equation, we see that first we find the number of ways
+to choose a small committee of size k from n people. We multiply that by the
+ways to choose the number of people who will be leftover in the large committees
+after the small committees are taken out (r - k) from the number of people left
+after making a small committee (n - k).
+
+** Feedback
+
+* 3rd Question
+
+  Give a combinatorial argument that if /n/ is a positive integer then
+  \(\sum_{k = 0}^{n}k^2{n \choose k} = n(n + 1)2^{n - 2}.\)
+
+  Hint: show that both sides count the ways to select a subset of a
+  set of /n/ elements together with two not necessarily distinct
+  elements from this subset. It will be easier to do so if you express
+  the right-hand side as the equivalent \(n(n - 1)2^{n - 2} + n2^{n -
+  1}\) (after verifying that they are indeed equivalent).
+
+** Answer
+:
+** Feedback
+
+* 4th Question
+
+  Does any row in Pascal's Triangle have three consecutive entries in
+  the ratio 1:2:3?
+
+  The number of rows where this relationship could possibly hold is:
+
+  - [ ] Zero.
+  - [ ] At least one.
+  - [ ] At most one.
+  - [X] Exactly one.
+  - [ ] It cannot be determined.
+
+  Explain your answer.
+
+** Answer
+
+I took the n choose k representation of three consecutive terms in Pascal's
+triangle, then put the first term over the second term, put it equal to 1/2, and
+reduced it. Then I did the same thing with the second term divided by the thrid
+term, equal to 2/3, and reduced it. At this point, I had a system of two
+equations, and I found the only numbers that worked for n and k. I plugged those
+numbers into the n choose k representation of three consecutive terms, and I got
+the only three consecutive terms that fit that ratio in Pascal's triangle.
+
+** Feedback
+
+
