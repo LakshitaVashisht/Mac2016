@@ -1,0 +1,56 @@
+#+TITLE:  Ath Quiz
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:t toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+* 1st Question
+
+   What is the largest number of comparisons made by a binary search in
+   searching for a key in the following vector?
+
+   =[3 14 27 31 39 42 55 70 74 81 85 93 98]=
+
+   - [ ]  12
+   - [ ]  13
+   - [ ]  3
+   - [X]  4
+
+* 2nd Question
+  
+  Let new-vector be the vector of the previous question prepended with 1 and
+  appended with 100. If you insert the keys in new-vector in order into a binary
+  search tree (BST); that is, first insert 1, then insert 3, then 14, etc., what
+  is the average number of comparisons made when searching for any key in the
+  resulting BST?
+
+** Answer
+15
+*** Feedback
+
+* 3rd Question
+
+   Do you know how to evaluate emacs-lisp source-code blocks in org-mode? Prove
+   it by finding the answer to the previous question! 
+
+#+BEGIN_SRC emacs-lisp
+  (defun weighted-path-length (weights lengths)
+    (loop for w in weights
+          for l in lengths
+          sum (* w l)))
+#+END_SRC
+
+#+tblname: weights-as-table
+| 0.067 | 0.067 | 0.067 | 0.067 | 0.067 | 0.067 | 0.067 | 0.067 | 0.067 | 0.067 | 0.067 | 0.067 | 0.067 | 0.067 | 0.067 |
+
+#+tblname: lengths-as-table
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 |
+
+#+BEGIN_SRC emacs-lisp :var wats=weights-as-table :var lats=lengths-as-table
+  (weighted-path-length (first wats) (first lats))
+#+END_SRC
+(defun make-bst (depth)
+  (if (zerop depth)
+      (cons nil nil)
+    (cons (make-bst (1- depth)) (make-bst (1- depth)))))
