@@ -1,0 +1,111 @@
+#+TITLE:  7th Exercises
+#+AUTHOR: Rick Neff
+#+EMAIL:  rick.neff@gmail.com
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 num:nil toc:nil \n:t @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+#+STARTUP:   showeverything
+
+* 1st Question
+ 
+  Write elisp code suitable for exploring the question: what is the largest
+  /unfillable/ order of chicken nuggets that only come 5 to a box or 7 to a box,
+  with no partial boxes allowed?
+
+  The code you wrote for your first exploration in DM1 (coolness) might be
+  helpful, as might the code below:
+
+#+BEGIN_SRC emacs-lisp
+   (defun is-fillable (n x y)
+     (and (>= x 0)
+          (>= y 0)
+          (= n (+ (* 5 x) (* 7 y)))))
+#+END_SRC
+
+** Answer
+#+BEGIN_SRC emacs-lisp
+ (defun for-some-for-some (predicate n domain1 domain2)
+    (loop for item1 across domain1
+          thereis (loop for item2 across domain2
+              thereis (funcall predicate n item1 item2))))
+
+(defun largest-unfillable-boxes ()
+     (let* ((vec-of-nums [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16]))
+      (loop for i from 13 to 200 
+        if (not (for-some-for-some 'is-fillable i vec-of-nums vec-of-nums)) collect i)))
+
+(largest-unfillable-box)
+#+END_SRC
+
+#+RESULTS:
+: (13 16 18 23)
+*** Feedback
+
+* 2nd Question
+
+  Experiment with the following source code. What justification is there for this approach?
+
+
+#+BEGIN_SRC emacs-lisp
+  (defun printf (fs &rest args)
+    (and (princ (apply #'format (cons fs args)))) t)
+
+ (defun find-factorization (num lim)
+    (loop for n from 1 to lim
+          do (let* ((f (floor (sqrt num)))
+                    (s (+ f n))
+                    (x (sqrt (- (* s s) num))))
+               (cond ((= x (floor x))
+                      (printf "n = %d, f = %d, s = %d, x = %d, f1 = s - x = %d, f2 = s + x = %d\n"
+                              n f s x (- s x) (+ s x))))
+               '(t nil))))
+#+END_SRC
+** Answer
+This code  finds solutions for this equation with a given num:
+
+\((\sqrt a - \sqrt b) * (\sqrt a + \sqrt b) = a - b = num\)
+
+For any two numbers, say a and b, the following is true:
+\((\sqrt a - \sqrt b) * (\sqrt a + \sqrt b) = a - b\)
+
+
+Hence,  \((\sqrt a - \sqrt b)\) and \((\sqrt a + \sqrt b)\) are factors of num.
+
+*** Feedback
+
+
+* 3rd Question
+
+  An integer is called *squarefree* if it is not divisible by the square of a
+  positive integer greater than 1. Write elisp code to find the number of
+  squarefree positive integers less than 1000.
+
+** Answer
+#+BEGIN_SRC emacs-lisp
+(defun make-squares-upto (limit)
+      (loop for i from 2 upto limit collect (* i i)))
+
+(defun find-squarefrees-upto (limit)
+  (let* ((squares (make-squares-upto 31)) (squarefrees (make-bool-vector (1+ limit) t)) (count (- limit 3)))
+    (aset squarefrees 0 nil) (aset squarefrees 1 nil) (aset squarefrees 2 nil) 
+    (loop for i in squares
+          do (loop for j from i upto limit by i do (aset squarefrees j nil) do (decf count))) (cons count squarefrees)))
+
+(bool-vector-count-population (cdr (find-squarefrees-upto 1000)))
+
+#+END_SRC
+
+#+RESULTS:
+: 608
+
+*** Feedback
+
+* 4th Question
+
+   A group of /n/ students is assigned seats for each of two classes in the same
+  classroom. How many ways can these seats be assigned if no student is assigned
+  the same seat for both classes?
+
+** Answer
+
+ multiply \(n!\) by sum \(\frac {(-1) ^i} {i!} \), \(i = 0\) to \(n\)
+*** Feedback
